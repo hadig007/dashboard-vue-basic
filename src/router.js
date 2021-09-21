@@ -10,13 +10,13 @@ import NotFound from './components/NotFound.vue'
 const router = createRouter({
     history:createWebHistory(),
     routes:[
-        {path:'/', redirect:'home'},
+        {path:'/', redirect:'/home/dashboard', name: 'home'},
         {path:'/home/', component:Dashboard,children:[
             {path:'dashboard', component:Home},
             {path:'pos', component:Pos},
             {path:'orders', component:Orders},
         ]},
-        {path:'/login', component:Login},
+        {path:'/login', component:Login, name:'login'},
         {path:'/sign-up', component: SignUp}, 
         {path:'/:NotFound(.*)', component: NotFound}, 
     ]

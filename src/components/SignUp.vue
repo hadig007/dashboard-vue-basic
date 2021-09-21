@@ -9,7 +9,7 @@
                     <form @submit.prevent="signUp">
                         <div class="form">
                             <label for="lastName">Name</label>
-                            <input type="text" v-model.trim="datas.lastName" name="lastName" id="lastName" placeholder="insert your lastName..">
+                            <input type="text" v-model.trim="datas.name" name="lastName" id="lastName" placeholder="insert your lastName..">
                         </div>
                         <div class="form">
                             <label for="email">Email</label>
@@ -36,18 +36,26 @@ export default {
             datas:{
                 name:'',
                 email:'',
-                password:''
+                password:'',
             }
         }
     },
     emits:['sign-up'],
     methods:{
         signUp(){
+            let data = {
+                name : this.datas.name,
+                email : this.datas.email,
+                password : this.datas.password,
+                // password : this.datas.con_password,
+            }
             console.log(this.datas)
-            axios.post('http://127.0.0.1:8000/api/auth/register',this.datas)
+            axios.post('http://127.0.0.1:8000/api/auth/register',data)
             .then(
-                (res => 
+                ((res) => {
                     console.log('register berhasil', res.data)
+                    this.$router.push({name:'login'})
+                }
                 )
             )
             .catch(e=>console.log(e.response.data))

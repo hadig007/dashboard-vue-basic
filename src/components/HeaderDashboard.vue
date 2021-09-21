@@ -4,6 +4,7 @@
         <ul>
             <li><router-link to="/login">Login</router-link></li>
             <li><router-link to="/sign-up">SignUp</router-link></li>
+            <li><router-link to="/logout">logout</router-link></li>
         </ul>
     </header>
 </template>

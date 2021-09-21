@@ -29,7 +29,7 @@
 <script>
 import HeaderDashboard from './HeaderDashboard.vue'
 export default {
-  components: { HeaderDashboard },
+    components: { HeaderDashboard },
     data(){
         return{
             others:[

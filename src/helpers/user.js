@@ -21,6 +21,8 @@ export default{
     },
 
     loggedIn(){
+        console.log('yes loggend in')
+        console.log(this.hasToken)
         return this.hasToken;
     },
 

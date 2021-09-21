@@ -9,11 +9,11 @@ import '@fortawesome/fontawesome-free/js/all.js'
 
 
 // appstore for jwt
-
 // import user from  './helpers/user'
+// app.use(user)
+
 
 const app = createApp(App)
 app.use(router)
-// app.use(user)
 
 app.mount('#app')

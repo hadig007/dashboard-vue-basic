@@ -8,11 +8,7 @@
                     </div>
                     <form @submit.prevent="signUp">
                         <div class="form">
-                            <label for="firstName">First Name</label>
-                            <input type="text" v-model.trim="datas.firstName" name="firstName" id="firstName" placeholder="insert your firstName..">
-                        </div>
-                        <div class="form">
-                            <label for="lastName">Last Name</label>
+                            <label for="lastName">Name</label>
                             <input type="text" v-model.trim="datas.lastName" name="lastName" id="lastName" placeholder="insert your lastName..">
                         </div>
                         <div class="form">
@@ -33,12 +29,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
             datas:{
-                firstName:'',
-                lastName:'',
+                name:'',
                 email:'',
                 password:''
             }
@@ -48,6 +44,13 @@ export default {
     methods:{
         signUp(){
             console.log(this.datas)
+            axios.post('http://127.0.0.1:8000/api/auth/register',this.datas)
+            .then(
+                (res => 
+                    console.log('register berhasil', res.data)
+                )
+            )
+            .catch(e=>console.log(e.response.data))
         }
     }
 }

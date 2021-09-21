@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import user from '../helpers/user.js'
 export default {
     data(){
         return{
@@ -37,6 +39,17 @@ export default {
     methods:{
         login(){
             console.log(this.datas)
+            axios.post('http://127.0.0.1:8000/api/auth/login', this.datas)
+            .then(
+                (res) => {
+                    user.responseAfterLogin(res)
+                    console.log('berhasil login, res = ', res)
+                    this.$router.push('/home')
+                }
+            ).catch(
+                e=>console.log('bermasalah pada', e.response)
+            ).then(console.log('kamu hebat hadi'))
+            
         }
     }
 }
